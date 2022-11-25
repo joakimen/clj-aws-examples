@@ -37,3 +37,13 @@
 
 ;; list roles
   (->> (aws/invoke iam {:op :ListRoles}) :Roles (map :RoleName)))
+
+;; generate credentialreport
+(aws/invoke iam {:op :GenerateCredentialReport})
+
+;; download credentialreport
+(->>
+ (aws/invoke iam {:op :GetCredentialReport})
+ :Content
+ (slurp)
+ (spit "credential_report.csv"))
