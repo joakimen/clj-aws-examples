@@ -47,3 +47,11 @@
  :Content
  (slurp)
  (spit "credential_report.csv"))
+
+;; Get my user policies
+(aws/doc iam :ListAttachedUserPolicies)
+(let [username (-> (aws/invoke iam {:op :GetUser}) :User :UserName)]
+  (->> (aws/invoke iam {:op :ListAttachedUserPolicies
+                        :request {:UserName username}})
+       :AttachedPolicies
+       (map :PolicyName)))
