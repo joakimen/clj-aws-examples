@@ -3,11 +3,10 @@
 
 (comment
 
-;;   create client
+;; create client
   (def iam (aws/client {:api :iam
                         :region "eu-west-1"
                         :credentials-provider (get-creds)}))
-
 
 ;; view all available operations for the client we've assembled
   (-> (aws/ops iam) keys sort)
@@ -17,7 +16,6 @@
 
 ;; invoke an operation
   (aws/invoke iam {:op :ListUsers})
-
 
 ;; list users
   (aws/doc iam :ListUsers) ;; docs
@@ -38,10 +36,8 @@
 ;; list roles
   (->> (aws/invoke iam {:op :ListRoles}) :Roles (map :RoleName)))
 
-;; generate credentialreport
+;; generate and download credentialreport
 (aws/invoke iam {:op :GenerateCredentialReport})
-
-;; download credentialreport
 (->>
  (aws/invoke iam {:op :GetCredentialReport})
  :Content
