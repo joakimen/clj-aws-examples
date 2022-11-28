@@ -3,12 +3,12 @@
 
 (defn read-config
   "read config-file into map"
-  [file] (edn/read-string (slurp file)))
+  [] (edn/read-string (slurp "config.edn")))
 
 (defn get-creds
   "configure basic credentials (id/key)"
   []
-  (let [config (read-config "config.edn")]
+  (let [config (read-config)]
     (credentials/basic-credentials-provider
      {:access-key-id    (:access-key-id config)
       :secret-access-key (:secret-access-key config)})))
