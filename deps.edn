@@ -4,4 +4,6 @@
         com.cognitect.aws/budgets   {:mvn/version "822.2.1171.0"}
         com.cognitect.aws/s3        {:mvn/version "825.2.1250.0"}
         com.cognitect.aws/ec2       {:mvn/version "825.2.1262.0"}
-        cheshire/cheshire           {:mvn/version "5.11.0"}}}
+        com.cognitect.aws/sqs       {:mvn/version "822.2.1109.0"}
+        cheshire/cheshire           {:mvn/version "5.11.0"}
+        com.taoensso/timbre         {:mvn/version "6.0.4"}}}
