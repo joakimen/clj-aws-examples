@@ -5,3 +5,5 @@ config.edn
 .cpcache
 .lsp
 .nrepl-port
+.DS_Store
+.portal
